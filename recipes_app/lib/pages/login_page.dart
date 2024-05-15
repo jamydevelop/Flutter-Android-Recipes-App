@@ -21,17 +21,20 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _buildUI() {
     return Column(
-      children: [_title()],
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Container(),
+        _title(),
+      ],
     );
   }
 
   Widget _title() {
     return const Text(
       'Recipe Book',
-      style: TextStyle(
-        fontSize: 35,
-        fontWeight: FontWeight.w300
-      ),
+      style: TextStyle(fontSize: 35, fontWeight: FontWeight.w300),
     );
   }
 }
