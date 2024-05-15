@@ -25,8 +25,9 @@ class _LoginPageState extends State<LoginPage> {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Container(),
+        //Container(),
         _title(),
+        _loginForm()
       ],
     );
   }
@@ -35,6 +36,14 @@ class _LoginPageState extends State<LoginPage> {
     return const Text(
       'Recipe Book',
       style: TextStyle(fontSize: 35, fontWeight: FontWeight.w300),
+    );
+  }
+
+  Widget _loginForm() {
+    return SizedBox(
+      width: MediaQuery.sizeOf(context).width * 0.90,
+      height: MediaQuery.sizeOf(context).height * 0.30,
+      child: TextFormField(),
     );
   }
 }
