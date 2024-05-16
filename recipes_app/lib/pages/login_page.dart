@@ -8,6 +8,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  GlobalKey<FormState> _loginFormKey = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,9 +29,8 @@ class _LoginPageState extends State<LoginPage> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          //Container(),
           _title(),
-          _loginForm()
+          _loginForm(),
         ],
       ),
     );
@@ -38,11 +39,15 @@ class _LoginPageState extends State<LoginPage> {
   Widget _title() {
     return const Text(
       'Recipe Book',
-      style: TextStyle(fontSize: 35, fontWeight: FontWeight.w300),
+      style: TextStyle(
+        fontSize: 35,
+        fontWeight: FontWeight.w300,
+      ),
     );
   }
 
   Widget _loginForm() {
+    Key: _loginFormKey;
     return SizedBox(
       width: MediaQuery.sizeOf(context).width * 0.90,
       height: MediaQuery.sizeOf(context).height * 0.30,
@@ -53,6 +58,11 @@ class _LoginPageState extends State<LoginPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             TextFormField(
+              validator: (value) {
+                if( value == null || value.isEmpty) {
+                  return 'Enter a username';
+                }
+              },
               decoration: const InputDecoration(hintText: 'Username'),
             ),
             TextFormField(
@@ -69,7 +79,11 @@ class _LoginPageState extends State<LoginPage> {
     return SizedBox(
       width: MediaQuery.sizeOf(context).width * 0.50,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          if(_loginFormKey.currentState?.validate() ?? false ) {
+
+          }
+        },
         child: const Text('Login'),
       ),
     );
