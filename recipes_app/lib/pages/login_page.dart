@@ -22,7 +22,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget _buildUI() {
     return Column(
       mainAxisSize: MainAxisSize.max,
-      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         //Container(),
@@ -43,7 +43,32 @@ class _LoginPageState extends State<LoginPage> {
     return SizedBox(
       width: MediaQuery.sizeOf(context).width * 0.90,
       height: MediaQuery.sizeOf(context).height * 0.30,
-      child: TextFormField(),
+      child: Form(
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            TextFormField(
+              decoration: const InputDecoration(hintText: 'Username'),
+            ),
+            TextFormField(
+              decoration: const InputDecoration(hintText: 'Password'),
+            ),
+            _loginButton(),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _loginButton() {
+    return SizedBox(
+      width: MediaQuery.sizeOf(context).width * 60,
+      child: ElevatedButton(
+        onPressed: () {},
+        child: const Text('Button'),
+      ),
     );
   }
 }
