@@ -8,6 +8,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  String? username, password;
   GlobalKey<FormState> _loginFormKey = GlobalKey();
 
   @override
@@ -47,25 +48,41 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget _loginForm() {
-    Key: _loginFormKey;
     return SizedBox(
       width: MediaQuery.sizeOf(context).width * 0.90,
       height: MediaQuery.sizeOf(context).height * 0.30,
       child: Form(
+        key: _loginFormKey,
         child: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             TextFormField(
+              onSaved: (value) {
+                setState(() {
+                  username = value;
+                });
+              },
               validator: (value) {
-                if( value == null || value.isEmpty) {
+                if (value == null || value.isEmpty) {
                   return 'Enter a username';
                 }
               },
               decoration: const InputDecoration(hintText: 'Username'),
             ),
             TextFormField(
+              onSaved: (value) {
+                setState(() {
+                  password = value;
+                });
+              },
+              obscureText: true,
+              validator: (value) {
+                if (value == null || value.length < 5) {
+                  return 'Enter a valid password';
+                }
+              },
               decoration: const InputDecoration(hintText: 'Password'),
             ),
             _loginButton()
@@ -80,8 +97,9 @@ class _LoginPageState extends State<LoginPage> {
       width: MediaQuery.sizeOf(context).width * 0.50,
       child: ElevatedButton(
         onPressed: () {
-          if(_loginFormKey.currentState?.validate() ?? false ) {
-
+          if (_loginFormKey.currentState?.validate() ?? false) {
+            _loginFormKey.currentState?.save();
+            debugPrint('$username - $password');
           }
         },
         child: const Text('Login'),
