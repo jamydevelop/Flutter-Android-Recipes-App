@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 
 class AuthService {
   
@@ -9,4 +8,8 @@ class AuthService {
   }
 
   AuthService._internal();
+
+  Future<bool> login(String name, String password) async {
+    return false;
+  }
 }
