@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recipes_app/service/auth_service.dart';
+import 'package:status_alert/status_alert.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -106,7 +107,18 @@ class _LoginPageState extends State<LoginPage> {
               username!,
               password!,
             );
-            print(result);
+            //print(result);
+            if (result) {
+            } else {
+              StatusAlert.show(
+                context,
+                duration: const Duration(seconds: 2),
+                title: 'Login Failed',
+                subtitle: 'Please try again',
+                configuration: const IconConfiguration(icon: Icons.error),
+                maxWidth: 260
+              );
+            }
             //debugPrint('$username - $password');
           }
         },
