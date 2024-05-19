@@ -106,6 +106,7 @@ class _LoginPageState extends State<LoginPage> {
               username!,
               password!,
             );
+            print(result);
             //debugPrint('$username - $password');
           }
         },
