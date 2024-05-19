@@ -9,7 +9,8 @@ class AuthService {
 
   AuthService._internal();
 
-  Future<bool> login(String name, String password) async {
+  Future<bool> login(String username, String password) async {
+    print(username);
     return false;
   }
 }
