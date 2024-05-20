@@ -8,7 +8,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,11 +15,13 @@ class _HomePageState extends State<HomePage> {
         title: const Text('RecipBook'),
         centerTitle: true,
       ),
-      body: _buildUI(),
+      body: SafeArea(
+        child: _buildUI(),
+      ),
     );
   }
 
-   Widget _buildUI() {
-      return Container();
-    }
+  Widget _buildUI() {
+    return Container();
+  }
 }
