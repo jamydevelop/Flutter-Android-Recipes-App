@@ -109,15 +109,14 @@ class _LoginPageState extends State<LoginPage> {
             );
             //print(result);
             if (result) {
+              Navigator.pushReplacementNamed(context, "/home");
             } else {
-              StatusAlert.show(
-                context,
-                duration: const Duration(seconds: 2),
-                title: 'Login Failed',
-                subtitle: 'Please try again',
-                configuration: const IconConfiguration(icon: Icons.error),
-                maxWidth: 260
-              );
+              StatusAlert.show(context,
+                  duration: const Duration(seconds: 2),
+                  title: 'Login Failed',
+                  subtitle: 'Please try again',
+                  configuration: const IconConfiguration(icon: Icons.error),
+                  maxWidth: 260);
             }
             //debugPrint('$username - $password');
           }

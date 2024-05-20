@@ -19,6 +19,9 @@ class HTTPService {
     final headers = {
       "Content-Type": "application/json",
     };
+    if (bearerToken != null) {
+      headers["Authorization"] = "Bearer $bearerToken";
+    }
     final options = BaseOptions(
         baseUrl: API_BASE_URL,
         headers: headers,
@@ -39,6 +42,5 @@ class HTTPService {
     } catch (e) {
       print(e);
     }
-    return null; //------------
   }
 }
