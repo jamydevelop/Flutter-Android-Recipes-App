@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipes_app/models/recipe.dart';
 import 'package:recipes_app/service/data_service.dart';
 
 class HomePage extends StatefulWidget {
@@ -77,7 +78,25 @@ class _HomePageState extends State<HomePage> {
       child: FutureBuilder(
         future: DataService().getRecipes(),
         builder: (context, snapshot) {
-          return Container();
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          if (snapshot.hasError) {
+            return const Center(
+              child: Text('Unable to laod data'),
+            );
+          }
+          return ListView.builder(
+            itemCount: snapshot.data!.length,
+            itemBuilder: (context, index) {
+              Recipe recipe = snapshot.data![index];
+              return ListTile(
+                title: Text(recipe.name),
+              );
+            },
+          );
         },
       ),
     );

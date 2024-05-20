@@ -16,7 +16,11 @@ class DataService {
     String path = 'recipes/';
     var respone = await _httpService.get(path);
     if (respone?.statusCode == 200 && respone?.data != null) {
-      print(respone!.data);
+      List data = respone!.data["recipes"];
+      List<Recipe> recipe = data.map((e) => Recipe.fromJson(e)).toList();
+      //print(recipe);
+      return recipe;
+      //print(respone!.data);
     }
   }
 
