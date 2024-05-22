@@ -97,7 +97,9 @@ class _HomePageState extends State<HomePage> {
                 subtitle: Text(
                   "${recipe.cuisine}\nDifficulty: ${recipe.difficulty}",
                 ),
+                leading: Image.network(recipe.image),
                 title: Text(recipe.name),
+                trailing: Text('${recipe.rating.toString()} ⭐'),
               );
             },
           );
