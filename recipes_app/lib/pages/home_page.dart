@@ -99,7 +99,10 @@ class _HomePageState extends State<HomePage> {
                 ),
                 leading: Image.network(recipe.image),
                 title: Text(recipe.name),
-                trailing: Text('${recipe.rating.toString()} ⭐'),
+                trailing: Text(
+                  '${recipe.rating.toString()} ⭐',
+                  style: const TextStyle(fontSize: 15),
+                ),
               );
             },
           );
