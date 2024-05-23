@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recipes_app/models/recipe.dart';
+import 'package:recipes_app/pages/recipe_page.dart';
 import 'package:recipes_app/service/data_service.dart';
 
 class HomePage extends StatefulWidget {
@@ -78,9 +79,11 @@ class _HomePageState extends State<HomePage> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5.0),
             child: FilledButton(
-              onPressed: () {setState(() {
+              onPressed: () {
+                setState(() {
                   _mealTypeFilter = 'dinner';
-                });},
+                });
+              },
               child: const Text('🥩 Dinner'),
             ),
           ),
@@ -109,6 +112,18 @@ class _HomePageState extends State<HomePage> {
             itemBuilder: (context, index) {
               Recipe recipe = snapshot.data![index];
               return ListTile(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return RecipePage(
+                          recipe: recipe,
+                        );
+                      },
+                    ),
+                  );
+                },
                 contentPadding: const EdgeInsets.only(
                   top: 20.0,
                 ),
