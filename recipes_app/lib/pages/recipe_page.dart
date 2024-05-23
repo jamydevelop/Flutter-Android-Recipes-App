@@ -5,6 +5,7 @@ class RecipePage extends StatelessWidget {
   final Recipe recipe;
 
   const RecipePage({
+    super.key,
     required this.recipe,
   });
 
@@ -18,13 +19,29 @@ class RecipePage extends StatelessWidget {
           'RecipBook',
         ),
       ),
-      body: _buildUI(),
+      body: _buildUI(context),
     );
   }
 
-  Widget _buildUI() {
-    return const Column(
-      children: [],
+  Widget _buildUI(BuildContext context) {
+    return Column(
+      children: [
+        _recipeImage(context),
+      ],
+    );
+  }
+
+  Widget _recipeImage(BuildContext context) {
+    return Container(
+      height: MediaQuery.sizeOf(context).height * 0.40,
+      width: MediaQuery.sizeOf(context).width,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: NetworkImage(
+            recipe.image,
+          ),
+        ),
+      ),
     );
   }
 }
