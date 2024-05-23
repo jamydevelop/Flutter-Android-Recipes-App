@@ -93,6 +93,7 @@ class _HomePageState extends State<HomePage> {
             itemBuilder: (context, index) {
               Recipe recipe = snapshot.data![index];
               return ListTile(
+                contentPadding: const EdgeInsets.only(top: 20.0),
                 isThreeLine: true,
                 subtitle: Text(
                   "${recipe.cuisine}\nDifficulty: ${recipe.difficulty}",
