@@ -36,6 +36,9 @@ class RecipePage extends StatelessWidget {
         _recipeIngridients(
           context,
         ),
+        _recipeInstructions(
+          context,
+        ),
       ],
     );
   }
@@ -96,6 +99,35 @@ class RecipePage extends StatelessWidget {
   }
 
   Widget _recipeIngridients(BuildContext context) {
-    return Container();
+    return Container(
+      color: Colors.white,
+      width: MediaQuery.sizeOf(context).width,
+      padding: const EdgeInsets.symmetric(
+        vertical: 15.0,
+        horizontal: 20.0,
+      ),
+      child: Column(
+          children: recipe.ingredients.map((i) {
+        return Row(
+          children: [
+            const Icon(Icons.check_box),
+            Text(
+              " ${i}",
+            )
+          ],
+        );
+      }).toList()),
+    );
+  }
+
+  Widget _recipeInstructions(BuildContext context) {
+    return Container(
+      color: Colors.white,
+      width: MediaQuery.sizeOf(context).width,
+      padding: const EdgeInsets.symmetric(
+        vertical: 15.0,
+        horizontal: 20.0,
+      ),
+    );
   }
 }
