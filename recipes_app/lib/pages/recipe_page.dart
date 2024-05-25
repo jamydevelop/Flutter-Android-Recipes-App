@@ -33,6 +33,9 @@ class RecipePage extends StatelessWidget {
         _recipeDetails(
           context,
         ),
+        _recipeIngridients(
+          context,
+        ),
       ],
     );
   }
@@ -53,6 +56,46 @@ class RecipePage extends StatelessWidget {
   }
 
   Widget _recipeDetails(BuildContext context) {
+    return Container(
+      color: Colors.white,
+      width: MediaQuery.sizeOf(context).width,
+      padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 20.0),
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            '${recipe.cuisine}, ${recipe.difficulty}',
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
+          ),
+          Text(
+            recipe.name,
+            style: const TextStyle(
+              fontSize: 30.0,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Text(
+            'Prep Time: ${recipe.prepTimeMinutes} Minutes | Cook Time: ${recipe.cookTimeMinutes} Minutes',
+            style: const TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.w300,
+            ),
+          ),
+          Text(
+            'Rating: ${recipe.rating.toString()} ⭐ | Cook Time: ${recipe.reviewCount} Reviews',
+            style: const TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _recipeIngridients(BuildContext context) {
     return Container();
   }
 }
