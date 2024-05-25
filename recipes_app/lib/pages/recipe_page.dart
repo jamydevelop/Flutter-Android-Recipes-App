@@ -12,6 +12,7 @@ class RecipePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.white60,
@@ -26,7 +27,12 @@ class RecipePage extends StatelessWidget {
   Widget _buildUI(BuildContext context) {
     return Column(
       children: [
-        _recipeImage(context),
+        _recipeImage(
+          context,
+        ),
+        _recipeDetails(
+          context,
+        ),
       ],
     );
   }
@@ -37,11 +43,16 @@ class RecipePage extends StatelessWidget {
       width: MediaQuery.sizeOf(context).width,
       decoration: BoxDecoration(
         image: DecorationImage(
+          fit: BoxFit.cover,
           image: NetworkImage(
             recipe.image,
           ),
         ),
       ),
     );
+  }
+
+  Widget _recipeDetails(BuildContext context) {
+    return Container();
   }
 }
