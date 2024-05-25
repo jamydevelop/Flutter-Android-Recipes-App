@@ -128,6 +128,9 @@ class RecipePage extends StatelessWidget {
         vertical: 15.0,
         horizontal: 20.0,
       ),
+      child: Column(
+        children: [],
+      ),
     );
   }
 }
