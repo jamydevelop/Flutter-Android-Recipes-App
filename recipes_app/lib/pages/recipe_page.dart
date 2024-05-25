@@ -25,21 +25,23 @@ class RecipePage extends StatelessWidget {
   }
 
   Widget _buildUI(BuildContext context) {
-    return Column(
-      children: [
-        _recipeImage(
-          context,
-        ),
-        _recipeDetails(
-          context,
-        ),
-        _recipeIngridients(
-          context,
-        ),
-        _recipeInstructions(
-          context,
-        ),
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          _recipeImage(
+            context,
+          ),
+          _recipeDetails(
+            context,
+          ),
+          _recipeIngridients(
+            context,
+          ),
+          _recipeInstructions(
+            context,
+          ),
+        ],
+      ),
     );
   }
 
@@ -129,7 +131,19 @@ class RecipePage extends StatelessWidget {
         horizontal: 20.0,
       ),
       child: Column(
-        children: [],
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: recipe.instructions.map((i) {
+          return Text(
+            "${recipe.instructions.indexOf(i) + 1}) $i\n",
+            maxLines: 3,
+            textAlign: TextAlign.start,
+            style: const TextStyle(
+              fontSize: 15.0,
+            ),
+          );
+        }).toList(),
       ),
     );
   }
