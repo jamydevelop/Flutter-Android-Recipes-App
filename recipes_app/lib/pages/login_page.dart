@@ -61,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             TextFormField(
-              initialValue: 'kminchelle',
+              initialValue: 'emilys',
               onSaved: (value) {
                 setState(() {
                   username = value;
@@ -75,7 +75,7 @@ class _LoginPageState extends State<LoginPage> {
               decoration: const InputDecoration(hintText: 'Username'),
             ),
             TextFormField(
-              initialValue: '0lelplR',
+              initialValue: 'emilyspass',
               onSaved: (value) {
                 setState(() {
                   password = value;
