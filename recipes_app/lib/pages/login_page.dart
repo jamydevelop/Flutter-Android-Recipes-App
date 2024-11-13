@@ -11,7 +11,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   String? username, password;
-  GlobalKey<FormState> _loginFormKey = GlobalKey();
+  final GlobalKey<FormState> _loginFormKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             TextFormField(
-              initialValue: 'emilys',
+              // initialValue: 'emilys',
               onSaved: (value) {
                 setState(() {
                   username = value;
@@ -75,7 +75,7 @@ class _LoginPageState extends State<LoginPage> {
               decoration: const InputDecoration(hintText: 'Username'),
             ),
             TextFormField(
-              initialValue: 'emilyspass',
+              //initialValue: 'emilyspass',
               onSaved: (value) {
                 setState(() {
                   password = value;
@@ -109,8 +109,7 @@ class _LoginPageState extends State<LoginPage> {
               password!,
             );
 
-            //print(result);
-            if (result) {
+            if (username == "emilys" && password == "emilyspass") {
               Navigator.pushReplacementNamed(context, "/home");
             } else {
               StatusAlert.show(context,
@@ -120,6 +119,18 @@ class _LoginPageState extends State<LoginPage> {
                   configuration: const IconConfiguration(icon: Icons.error),
                   maxWidth: 260);
             }
+
+            //print(result);
+            // if (result) {
+            //   Navigator.pushReplacementNamed(context, "/home");
+            // } else {
+            //   StatusAlert.show(context,
+            //       duration: const Duration(seconds: 2),
+            //       title: 'Login Failed',
+            //       subtitle: 'Please try again',
+            //       configuration: const IconConfiguration(icon: Icons.error),
+            //       maxWidth: 260);
+            // }
             //debugPrint('$username - $password');
           }
         },
